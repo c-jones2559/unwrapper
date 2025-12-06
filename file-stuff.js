@@ -55,19 +55,45 @@ function readJSONFile(file) {
    reader.readAsText(file);
 }
 
+function readFilePromise(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsText(file);
+    });
+}
+
+async function processAllFiles(filesArray) {
+    const fileInput = document.getElementById("input");
+    const filesArray = [...fileInput.files]; 
+    const promiseArray = filesArray.map(readFilePromise);
+
+    try {
+        const rawJsonResults = await Promise.all(promiseArray);
+        const finalJsonObjects = rawJsonResults.map(rawString => JSON.parse(rawString));
+        console.log("ALL JSON DATA READY:", finalJsonObjects);
+        return finalJsonObjects;
+
+    } catch (e) {
+        console.error("A file operation failed:", e);
+    }
+}
 function checkValid () {
    console.log("checkValid running...")
-   const fileList = document.getElementById("input");
-   const fileArray = [...fileList.files];
-   const fileArrayObjs = fileArray.map(readJSONFile)
-   const valid = document.getElementById("valid");
+   const fileInput = document.getElementById("input");
+   const fileArray = [...fileInput.files];
 
    if (fileArray.length === 0) {
       console.log("No files selected.")
       return;
-  }
+   }
 
-   for (const file of fileArrayObjs) {
+   const processedObjs = processAllFiles(filesArray);
+   const valid = document.getElementById("valid");
+
+   
+   for (const file of processedObjs) {
       console.log(`File contents: ${file}`);
       if (validFields.includes(file)) {
          continue;
