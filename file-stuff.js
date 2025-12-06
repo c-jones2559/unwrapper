@@ -38,16 +38,18 @@ const validFields = [
 
 function checkValid () {
    console.log("checkValid running...")
-   const files = document.getElementById("input").files;
+   const fileList = document.getElementById("input");
+   const fileArray = fileList.files;
    const valid = document.getElementById("valid");
-   for (const file of files) {
+   
+   for (const file of fileArray) {
       if (validFields.includes(file)) {
          continue;
       } else {
-         console.log("Files invalid.")
-         valid.innerHTML = "Invalid, please enter a different file. See help for more details. (help hasn't been implemented yet)"
+         console.log("Files invalid.");
+         valid.innerHTML = "Invalid, please enter a different file. See help for more details. (help hasn't been implemented yet)";
       }
    }
-   console.log("Files valid.")
-   valid.innerHTML = "Valid file, processing. (this won't do anything yet)"
+   console.log("Files valid.");
+   valid.innerHTML = "Valid file, processing. (this won't do anything yet)";
 }
