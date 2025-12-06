@@ -68,19 +68,21 @@ async function checkValid () {
    }
 
    const processedObjs = await processAllFiles(fileArray);
-   const actualArray = processedObjs[0]
    const valid = document.getElementById("valid");
 
    
-   for (const file of actualArray) {
+   for (const file of processedObjs) {
       console.log(`File contents: ${file}`);
-      if (validFields.includes(file)) {
-         continue;
-      } else {
-         console.error("Files invalid.");
-         valid.innerHTML = "Invalid, please enter a different file. See help for more details. (help hasn't been implemented yet)";
-         return;
+      for (const field of keys(file)) {
+         if (validFields.includes(field)) {
+            continue;
+         } else {
+            console.error("Files invalid.");
+            valid.innerHTML = "Invalid, please enter a different file. See help for more details. (help hasn't been implemented yet)";
+            return;
+         }
       }
+      
    }
    console.log("Files valid.");
    valid.innerHTML = "Valid file, processing. (this won't do anything yet)";
