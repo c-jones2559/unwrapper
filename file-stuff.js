@@ -36,18 +36,41 @@ const validFields = [
    "incognito_mode"
 ]
 
+function readJSONFile(file) {
+   const reader = new FileReader();
+
+   reader.onload = function(event) {
+      const jsonString = event.target.result;
+
+      try {
+         const jsonObject = JSON.parse(jsonString);
+         processJsonObject(jsonObject, file.name);
+      } catch (e) {
+         console.error `Unable to parse file ${file.name}.`;
+      }
+
+   }
+
+   reader.readAsText(file);
+}
+
 function checkValid () {
    console.log("checkValid running...")
    const fileList = document.getElementById("input");
    const fileArray = fileList.files;
    const valid = document.getElementById("valid");
 
+   if (fileList.length === 0) {
+      console.log("No files selected.")
+      return;
+  }
+
    for (const file of fileArray) {
       console.log(file);
       if (validFields.includes(file)) {
          continue;
       } else {
-         console.log("Files invalid.");
+         console.error("Files invalid.");
          valid.innerHTML = "Invalid, please enter a different file. See help for more details. (help hasn't been implemented yet)";
          return;
       }
