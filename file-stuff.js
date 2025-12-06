@@ -38,7 +38,7 @@ const validFields = [
 
 function checkValid () {
    console.log("checkValid running...")
-   const files = document.getElementById("input");
+   const files = document.getElementById("input").files;
    const valid = document.getElementById("valid");
    for (const file of files) {
       if (validFields.includes(file)) {
