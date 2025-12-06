@@ -43,6 +43,7 @@ function checkValid () {
    const valid = document.getElementById("valid");
 
    for (const file of fileArray) {
+      console.log(file);
       if (validFields.includes(file)) {
          continue;
       } else {
