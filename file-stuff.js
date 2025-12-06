@@ -84,6 +84,7 @@ async function checkValid () {
                     continue;
                 } else {
                     console.error("Files invalid.");
+                    console.error(`Files invalid. Found unexpected key: ${key}`);
                     valid.innerHTML = "Invalid, please enter a different file. See help for more details. (help hasn't been implemented yet)";
                     return;
                 }
@@ -118,3 +119,4 @@ async function processAllFiles(filesArray) {
           console.error("A file operation failed:", e);
      }
 }
+
