@@ -75,7 +75,7 @@ async function checkValid () {
       console.log(`File contents: ${file}`);
       for (const field of getKeys(file)) {
          console.log(`Field: ${field}`)
-         if (validFields.includes(field)) {
+         if (validFields.includes(field.name)) {
             continue;
          } else {
             console.error("Files invalid.");
