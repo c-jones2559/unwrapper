@@ -72,15 +72,15 @@ async function checkValid () {
 
     
     for (const file of processedObjs) {
-        console.log(`File contents: ${file}, ${file.name}`);
+        console.log(`File contents: ${file}`);
 
         for (const record of getKeys(file)) {
-            console.log(`Record: ${record}, ${record.name}`)
+            console.log(`Record: ${record}`)
 
             const recordKeys = Object.keys(record);
             for (const key of recordKeys) {
-                console.log(`Key: ${key}, ${key.name}`)
-                if (validFields.includes(key.name)) {
+                console.log(`Key: ${key}`)            
+                if (validFields.includes(key)) {
                     continue;
                 } else {
                     console.error("Files invalid.");
