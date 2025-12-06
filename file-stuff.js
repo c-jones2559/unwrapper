@@ -37,6 +37,7 @@ const validFields = [
 ]
 
 function readJSONFile(file) {
+   console.log(`Reading json file: ${file.name}`)
    const reader = new FileReader();
 
    reader.onload = function(event) {
