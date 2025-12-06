@@ -57,7 +57,7 @@ function readJSONFile(file) {
 
 
 
-function checkValid () {
+async function checkValid () {
    console.log("checkValid running...")
    const fileInput = document.getElementById("input");
    const fileArray = [...fileInput.files];
@@ -67,7 +67,7 @@ function checkValid () {
       return;
    }
 
-   const processedObjs = processAllFiles(fileArray);
+   const processedObjs = await processAllFiles(fileArray);
    const valid = document.getElementById("valid");
 
    
