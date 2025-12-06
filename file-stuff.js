@@ -74,6 +74,7 @@ async function checkValid () {
    for (const file of processedObjs) {
       console.log(`File contents: ${file}`);
       for (const field of getKeys(file)) {
+         console.log(`Field: ${field}`)
          if (validFields.includes(field)) {
             continue;
          } else {
