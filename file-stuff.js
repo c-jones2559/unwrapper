@@ -96,8 +96,6 @@ function readFilePromise(file) {
 }
 
 async function processAllFiles(filesArray) {
-    const fileInput = document.getElementById("input");
-    const filesArray = [...fileInput.files]; 
     const promiseArray = filesArray.map(readFilePromise);
 
     try {
