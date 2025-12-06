@@ -14,8 +14,10 @@
 </head>
 <body>
     <h1>hi silverwolf</h1>
-    <label for="data">Input your data here!:</label>
+    <label for="input">Input your data here!:</label><br/>
+    <input type="file" id="input" name="input" accept=".json" multiple/>
+    <button onclick="checkValid()">Process</button>
 
-    <input type="file" id="data" name="data" accept=".json" multiple/>
+    <p id="valid">No file processed yet.</p>
 </body>
 </html>
