@@ -58,6 +58,7 @@ function checkValid () {
    console.log("checkValid running...")
    const fileList = document.getElementById("input");
    const fileArray = fileList.files;
+   const fileArrayObjs = fileArray.map(readJSONFile)
    const valid = document.getElementById("valid");
 
    if (fileList.length === 0) {
@@ -65,7 +66,7 @@ function checkValid () {
       return;
   }
 
-   for (const file of fileArray) {
+   for (const file of fileArrayObjs) {
       console.log(file);
       if (validFields.includes(file)) {
          continue;
