@@ -1,6 +1,6 @@
 {
-    "name": "Unwrapped",
-    "short_name": "Unwrapped",
+    "name": "Unwrapper",
+    "short_name": "Unwrapper",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",
