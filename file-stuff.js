@@ -79,6 +79,7 @@ async function checkValid () {
 
             const recordKeys = Object.keys(record);
             for (const key of recordKeys) {
+                console.log(`Key: ${key}`)            
                 if (validFields.includes(key.name)) {
                     continue;
                 } else {
