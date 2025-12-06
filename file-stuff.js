@@ -68,10 +68,11 @@ async function checkValid () {
    }
 
    const processedObjs = await processAllFiles(fileArray);
+   const actualArray = processedObjs[0]
    const valid = document.getElementById("valid");
 
    
-   for (const file of processedObjs) {
+   for (const file of actualArray) {
       console.log(`File contents: ${file}`);
       if (validFields.includes(file)) {
          continue;
