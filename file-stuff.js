@@ -67,7 +67,7 @@ function checkValid () {
   }
 
    for (const file of fileArrayObjs) {
-      console.log(file);
+      console.log(`File contents: ${file}`);
       if (validFields.includes(file)) {
          continue;
       } else {
