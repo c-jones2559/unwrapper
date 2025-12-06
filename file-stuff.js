@@ -67,7 +67,7 @@ function checkValid () {
       return;
    }
 
-   const processedObjs = processAllFiles(filesArray);
+   const processedObjs = processAllFiles(fileArray);
    const valid = document.getElementById("valid");
 
    
