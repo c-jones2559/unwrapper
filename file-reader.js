@@ -121,7 +121,7 @@ function checkValid (songs) {
                 return;
             }
         }
-        console.log(`All keys valid for file ${i}.`);
+        //console.log(`All keys valid for file ${i}.`);
     }
     console.log("[============] 100%")
     valid.innerHTML = "Valid file, processing. (this won't do anything yet)";
