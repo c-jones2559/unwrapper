@@ -38,7 +38,12 @@ document.getElementById('processBtn').addEventListener('click', async () => {
         // Now you have an ARRAY of objects.
         // Access it like: combinedData[0].content.name
         console.log("Sorted. Here's your data:", combinedData);
-        
+        let songs = [];
+        for (file of combinedData) {
+            songs += file;
+        }
+        checkValid (songs);
+
         // If you absolutely MUST merge them into one giant object (risky business):
         // const mergedObj = Object.assign({}, ...combinedData.map(d => d.content));
 
@@ -73,8 +78,9 @@ const validFields = [
     "incognito_mode"
 ]
 
-//function checkValid (objs) {
-//    combinedData[0].content.name
-//    for 
-//}
+function checkValid (songs) {
+    for (let i = 0; i < songs.length; i++) {
+        console.log(`Song ${i}: ${songs.master_metadata_track_name}`)
+    }
+}
 
