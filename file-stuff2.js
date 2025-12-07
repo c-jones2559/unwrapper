@@ -84,9 +84,10 @@ const validFields = [
 
 function checkValid (songs) {
     console.log("Checking valid...");
+    const valid = document.getElementById("valid");
+
     valid.innerHTML = "Checking file is valid, hold on a second...";
 
-    const valid = document.getElementById("valid");
 
     for (let i = 0; i < songs.length; i++) {
         console.log(`Song ${i}: ${songs[i].master_metadata_track_name}`);
