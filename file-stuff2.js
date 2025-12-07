@@ -22,7 +22,8 @@ const readJsonFile = (file) => {
 };
 
 // 2. The Event Listener
-document.getElementById('processBtn').addEventListener('click', async () => {
+async function buttonClick() {
+// document.getElementById('processBtn').addEventListener('click', async () => {
     const inputElement = document.getElementById('input');
 
     if (!inputElement.files.length) {
@@ -53,7 +54,7 @@ document.getElementById('processBtn').addEventListener('click', async () => {
     } catch (error) {
         console.error("It's all gone pear-shaped:", error);
     }
-});
+};
 
 const validFields = [
     "ts",
