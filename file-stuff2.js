@@ -41,6 +41,7 @@ document.getElementById('processBtn').addEventListener('click', async () => {
         let songs = [];
         for (file of combinedData) {
             songs.push(file);
+            console.log(`${file} added to songs.`);
         }
         checkValid (songs);
 
