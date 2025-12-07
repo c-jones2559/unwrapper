@@ -126,7 +126,7 @@ function checkValid (songs) {
     console.log("[============] 100%");
     console.log("File valid!");
     valid.innerHTML = "Valid file, processing. (this won't do anything yet)";
-    calculateStats(songs);
+    // calculateStats(songs);
     return;
 }
 
