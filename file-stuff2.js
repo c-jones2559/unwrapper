@@ -86,7 +86,7 @@ function checkValid (songs) {
     console.log("Checking valid...");
     for (let i = 0; i < songs.length; i++) {
         console.log(`Song ${i}: ${songs[i].master_metadata_track_name}`);
-        console.log(`${Object.keys(songs[i])}`)
+        console.log(`${Object.keys(songs[i])}`);
     }
 
     const valid = document.getElementById("valid");
