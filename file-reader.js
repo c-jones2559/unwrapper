@@ -100,8 +100,16 @@ function checkValid (songs) {
     for (let i = 0; i < songs.length; i++) {
         //console.log(`Song ${i}: ${songs[i].master_metadata_track_name}`);
         //console.log(`${Object.keys(`Keys: ${songs[i]}`)}`);
-        if (i == songs.length/2 || i == (songs.length/2)+1) {
-            console.log("[=====>----] 50%")
+        if (i == 0) {
+            console.log("[>-----------] 0%")
+        } else if (i == songs.length/4) {
+            console.log("[===>--------] 25%")
+        } else if (i == songs.length/2) {
+            console.log("[======>-----] 50%")
+        } else if (i == songs.length/4*3) {
+            console.log("[=========>--] 75%")
+        } else if (i == songs.length) {
+            console.log("[===========>] 99%")
         }
         
         for (const key of Object.keys(songs[i])) {        
@@ -113,8 +121,9 @@ function checkValid (songs) {
                 return;
             }
         }
-        console.log("All keys valid")
+        console.log(`All keys valid for file ${i}.`);
     }
+    console.log("[============] 100%")
     valid.innerHTML = "Valid file, processing. (this won't do anything yet)";
     return;
 }
