@@ -8,6 +8,15 @@ function calculateStats(songs) {
     console.log("All stats calculated.")
 }
 
+function totalTime(songs) {
+    console.log("Calculating time...")
+    let total = 0
+    for (const song of songs) {
+        total += song.ms_played
+    }
+    console.log("Time calculated.")
+    return timeFormatter(total);
+}
 function timeFormatter(ms) {
     let s=0, m=0, h=0, d=0;
     while (ms > 1000) {
@@ -34,14 +43,4 @@ function timeFormatter(ms) {
     output += `${ms} milliseconds`
     
     return output;
-}
-
-function totalTime(songs) {
-    console.log("Calculating time...")
-    let total = 0
-    for (const song of songs) {
-        total += song.ms_played
-    }
-    console.log("Time calculated.")
-    return timeFormatter(total);
 }
