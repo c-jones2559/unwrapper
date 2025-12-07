@@ -1,1 +1,4 @@
 unwrapper, not unwrapped
+
+current problem: can't call stats processor from the html because it doesn't have the songs argument from file reader
+                 also can't call it from file reader because then it doesn't have a document to update
