@@ -32,6 +32,8 @@ function timeFormatter(ms) {
     if (m > 0) {output += `${m} minutes, `}
     if (s > 0) {output += `${s} seconds, `}
     output += `${ms} milliseconds`
+    
+    return output;
 }
 
 function totalTime(songs) {
