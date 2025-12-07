@@ -1,3 +1,11 @@
+/**
+ * The first two functions read the inputted json files.
+ * I got AI to do it because I don't understand JS.
+ * At the bottom of this file there's check valid which I made.
+ * 
+ * 
+ */
+
 // 1. Helper function to promise-ify the FileReader (makes life way easier)
 const readJsonFile = (file) => {
     return new Promise((resolve, reject) => {
@@ -90,8 +98,11 @@ function checkValid (songs) {
 
 
     for (let i = 0; i < songs.length; i++) {
-        console.log(`Song ${i}: ${songs[i].master_metadata_track_name}`);
+        //console.log(`Song ${i}: ${songs[i].master_metadata_track_name}`);
         //console.log(`${Object.keys(`Keys: ${songs[i]}`)}`);
+        if (i == songs.length/2 || i == (songs.length/2)+1) {
+            console.log("[=====>----] 50%")
+        }
         
         for (const key of Object.keys(songs[i])) {        
             if (validFields.includes(key)) {
