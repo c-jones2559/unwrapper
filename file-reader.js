@@ -92,9 +92,9 @@ const validFields = [
 
 function checkValid (songs) {
     console.log("Checking valid...");
-    const valid = document.getElementById("valid");
+    const stats = document.getElementById("stats");
 
-    valid.innerHTML = "Checking file is valid, hold on a second...";
+    stats.innerHTML = "Checking file is valid, hold on a second...";
 
 
     for (let i = 0; i < songs.length; i++) {
@@ -117,7 +117,7 @@ function checkValid (songs) {
                 continue;
             } else {
                 console.error(`Files invalid. Found unexpected key: ${key}`);
-                valid.innerHTML = "Invalid, please enter a different file. See help for more details. (help hasn't been implemented yet)";
+                stats.innerHTML = "Invalid, please enter a different file. See help for more details. (help hasn't been implemented yet)";
                 return;
             }
         }
@@ -125,7 +125,7 @@ function checkValid (songs) {
     }
     console.log("[============] 100%");
     console.log("File valid!");
-    valid.innerHTML = "Valid file, processing. (this won't do anything yet)";
+    valid.innerHTML = "Valid file, processing...)";
     calculateStats(songs);
     return;
 }
