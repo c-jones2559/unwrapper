@@ -1,8 +1,11 @@
 function calculateStats(songs) {
+    console.log("Calculating stats...")
     const stats = document.getElementById("stats");
     stats.innerHTML = "Calculating..."
 
-    stats.innerHTML = timeFormatter(totalTime(songs));
+    stats.innerHTML = totalTime(songs);
+
+    console.log("All stats calculated.")
 }
 
 function timeFormatter(ms) {
@@ -32,9 +35,11 @@ function timeFormatter(ms) {
 }
 
 function totalTime(songs) {
+    console.log("Calculating time...")
     let total = 0
     for (const song of songs) {
         total += song.ms_played
     }
-    return total;
+    console.log("Time calculated.")
+    return timeFormatter(total);
 }
