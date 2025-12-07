@@ -40,7 +40,7 @@ document.getElementById('processBtn').addEventListener('click', async () => {
         console.log("Sorted. Here's your data:", combinedData);
         let songs = [];
         for (file of combinedData) {
-            songs += file;
+            songs.push(file);
         }
         checkValid (songs);
 
@@ -80,7 +80,7 @@ const validFields = [
 
 function checkValid (songs) {
     for (let i = 0; i < songs.length; i++) {
-        console.log(`Song ${i}: ${songs.master_metadata_track_name}`)
+        console.log(`Song ${i}: ${song[i].master_metadata_track_name}`)
     }
 }
 
