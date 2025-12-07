@@ -31,19 +31,21 @@ document.getElementById('processBtn').addEventListener('click', async () => {
     }
 
     try {
-        // Innovative bit: Convert the FileList to an Array, map to Promises, and await them all at once
+        // Convert the FileList to an Array, map to Promises, and await them all at once
         const promises = Array.from(inputElement.files).map(readJsonFile);
         const combinedData = await Promise.all(promises);
 
-        // Now you have an ARRAY of objects.
-        // Access it like: combinedData[0].content.name
-        console.log("Sorted. Here's your data:", combinedData);
+        // Flatten all song objects from all files into one array
         let songs = [];
-        for (file of combinedData) {
-            songs.push(file);
-            console.log(`${file} added to songs.`);
+        for (const file of combinedData) {
+            if (Array.isArray(file.content)) {
+                songs = songs.concat(file.content);
+            } else {
+                songs.push(file.content);
+            }
         }
-        checkValid (songs);
+        console.log("All songs:", songs);
+        checkValid(songs);
 
         // If you absolutely MUST merge them into one giant object (risky business):
         // const mergedObj = Object.assign({}, ...combinedData.map(d => d.content));
@@ -80,9 +82,9 @@ const validFields = [
 ]
 
 function checkValid (songs) {
-    console.log("Checking valid...")
+    console.log("Checking valid...");
     for (let i = 0; i < songs.length; i++) {
-        console.log(`Song ${i}: ${song[i].master_metadata_track_name}`)
+        console.log(`Song ${i}: ${songs[i].master_metadata_track_name}`);
     }
 }
 
