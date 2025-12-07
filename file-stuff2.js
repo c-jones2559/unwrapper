@@ -84,13 +84,24 @@ const validFields = [
 
 function checkValid (songs) {
     console.log("Checking valid...");
-    for (let i = 0; i < songs.length; i++) {
-        console.log(`Song ${i}: ${songs[i].master_metadata_track_name}`);
-        console.log(`${Object.keys(songs[i])}`);
-    }
 
     const valid = document.getElementById("valid");
-    valid.innerHTML = "Valid file, processing. (this won't do anything yet)";
 
+    for (let i = 0; i < songs.length; i++) {
+        console.log(`Song ${i}: ${songs[i].master_metadata_track_name}`);
+        //console.log(`${Object.keys(songs[i])}`);
+        for (const key of Object.keys(songs[i])) {
+            console.log(`Key: ${key}`)            
+            if (validFields.includes(key)) {
+                continue;
+            } else {
+                console.error(`Files invalid. Found unexpected key: ${key}`);
+                valid.innerHTML = "Invalid, please enter a different file. See help for more details. (help hasn't been implemented yet)";
+                return;
+            }
+        }
+    }
+    valid.innerHTML = "Valid file, processing. (this won't do anything yet)";
+    return;
 }
 
