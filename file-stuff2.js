@@ -84,14 +84,15 @@ const validFields = [
 
 function checkValid (songs) {
     console.log("Checking valid...");
+    valid.innerHTML = "Checking file is valid, hold on a second...";
 
     const valid = document.getElementById("valid");
 
     for (let i = 0; i < songs.length; i++) {
         console.log(`Song ${i}: ${songs[i].master_metadata_track_name}`);
-        //console.log(`${Object.keys(songs[i])}`);
-        for (const key of Object.keys(songs[i])) {
-            console.log(`Key: ${key}`)            
+        //console.log(`${Object.keys(`Keys: ${songs[i]}`)}`);
+        
+        for (const key of Object.keys(songs[i])) {        
             if (validFields.includes(key)) {
                 continue;
             } else {
@@ -100,6 +101,7 @@ function checkValid (songs) {
                 return;
             }
         }
+        console.log("All keys valid")
     }
     valid.innerHTML = "Valid file, processing. (this won't do anything yet)";
     return;
