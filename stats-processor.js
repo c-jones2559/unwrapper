@@ -3,7 +3,7 @@ function calculateStats(songs) {
     const stats = document.getElementById("stats");
     stats.innerHTML = "Calculating..."
 
-    stats.innerHTML = totalTime(songs);
+    stats.innerHTML = `Your total listening time is: ${totalTime(songs)}!`;
 
     console.log("All stats calculated.")
 }
