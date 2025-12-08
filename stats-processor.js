@@ -3,11 +3,21 @@ function calculateStats(songs) {
     const stats = document.getElementById("stats");
     stats.innerHTML = "Calculating..."
 
-    stats.innerHTML = `Your total listening time is: ${totalTime(songs)}!`;
+
+    const time = totalTime(songs);
+    stats.innerHTML = `Your total listening time is: ${timeFormatter(time)}!\nThat's ~${msToHours(time)}`;
 
     console.log("All stats calculated.")
 }
 
+function msToHours(ms) {
+    let hours = 0
+    while (ms > (1000*60*60)) {
+        h++;
+        ms-= (1000*60*60);
+    }
+    return hours;
+}
 function totalTime(songs) {
     console.log("Calculating time...")
     let total = 0
@@ -15,7 +25,7 @@ function totalTime(songs) {
         total += song.ms_played
     }
     console.log("Time calculated.")
-    return timeFormatter(total);
+    return total;
 }
 function timeFormatter(ms) {
     let s=0, m=0, h=0, d=0;
