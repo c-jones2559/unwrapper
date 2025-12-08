@@ -44,14 +44,18 @@ function timeFormatter(ms) {
         d-=365;
     }
     let output = ""
-    if (y > 0) {output += `${y} years, `}
-    if (d > 0) {output += `${d} days, `}
-    if (h > 0) {output += `${h} hours, `}
-    if (m > 0) {output += `${m} minutes, `}
-    if (s > 0) {output += `${s} seconds, `}
-    output += `${ms} milliseconds`
+
+    if (y > 0) {output += `${y} year${sOnEnd(y)}, `}
+    if (d > 0) {output += `${d} day${sOnEnd(d)}, `}
+    if (h > 0) {output += `${h} hour${sOnEnd(h)}, `}
+    if (m > 0) {output += `${m} minute${sOnEnd(m)}, `}
+    if (s > 0) {output += `${s} second${sOnEnd(s)}, `}
+    output += `${ms} millisecond${sOnEnd(ms)}`
     
     return output;
+}
+function sOnEnd(num) {
+    if (num == 1) {""} else {"s"}
 }
 function msToHours(ms) {
     let hours = 0
