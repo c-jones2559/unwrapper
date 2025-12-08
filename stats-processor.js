@@ -13,7 +13,7 @@ function calculateStats(songs) {
 function msToHours(ms) {
     let hours = 0
     while (ms > (1000*60*60)) {
-        h++;
+        hours++;
         ms-= (1000*60*60);
     }
     return hours;
