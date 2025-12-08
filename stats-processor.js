@@ -30,7 +30,7 @@ function totalTime(songs) {
     return total;
 }
 function timeFormatter(ms) {
-    let s=0, m=0, h=0, d=0;
+    let s=0, m=0, h=0, d=0, y=0;
     while (ms > 1000) {
         s++;
         ms-=1000;
@@ -47,7 +47,12 @@ function timeFormatter(ms) {
         d++;
         h-=24;
     }
+    while (d > 365) {
+        y++;
+        h-=365;
+    }
     let output = ""
+    if (y > 0) {output += `${d} years, `}
     if (d > 0) {output += `${d} days, `}
     if (h > 0) {output += `${h} hours, `}
     if (m > 0) {output += `${m} minutes, `}
