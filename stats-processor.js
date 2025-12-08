@@ -41,7 +41,7 @@ function timeFormatter(ms) {
     }
     while (d > 365) {
         y++;
-        h-=365;
+        d-=365;
     }
     let output = ""
     if (y > 0) {output += `${d} years, `}
