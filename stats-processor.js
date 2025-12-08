@@ -5,7 +5,7 @@ function calculateStats(songs) {
 
 
     const time = totalTime(songs);
-    stats.innerHTML = `Your total listening time is: ${timeFormatter(time)}!<br>That's ~${msToHours(time)}hours!`;
+    stats.innerHTML = `Your total listening time is: ${timeFormatter(time)}!<br>That's ~${msToHours(time)} hours!`;
 
     console.log("All stats calculated.")
 }
@@ -16,7 +16,9 @@ function msToHours(ms) {
         hours++;
         ms-= (1000*60*60);
     }
-    return hours;
+    let hoursStr = hours.toLocaleString();
+
+    return hoursStr;
 }
 function totalTime(songs) {
     console.log("Calculating time...")
