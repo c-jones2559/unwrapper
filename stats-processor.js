@@ -5,7 +5,7 @@ function calculateStats(songs) {
 
 
     const time = totalTime(songs);
-    stats.innerHTML = `Your total listening time is: ${timeFormatter(time)}!\nThat's ~${msToHours(time)}`;
+    stats.innerHTML = `Your total listening time is: ${timeFormatter(time)}!<br>That's ~${msToHours(time)}hours!`;
 
     console.log("All stats calculated.")
 }
