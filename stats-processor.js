@@ -44,7 +44,7 @@ function timeFormatter(ms) {
         d-=365;
     }
     let output = ""
-    if (y > 0) {output += `${d} years, `}
+    if (y > 0) {output += `${y} years, `}
     if (d > 0) {output += `${d} days, `}
     if (h > 0) {output += `${h} hours, `}
     if (m > 0) {output += `${m} minutes, `}
