@@ -6,7 +6,7 @@ function calculateStats(songs) {
 
     const time = totalTime(songs);
     stats.innerHTML = `Your total listening time is: ${timeFormatter(time)}!<br>
-    That's ~${msToHours(time)} hours or ~${msToDays(time)} days!`;
+    That's ~${msToHours(time)} or ~${msToDays(time)}!`;
 
     console.log("All stats calculated.")
 }
@@ -63,7 +63,7 @@ function msToHours(ms) {
         hours++;
         ms -= (1000*60*60);
     }
-    let hoursStr = hours.toLocaleString();
+    let hoursStr = `${hours.toLocaleString()} hour${sOnEnd(hours)}`;
 
     return hoursStr;
 }
@@ -73,7 +73,7 @@ function msToDays(ms) {
         days++;
         ms -= (1000*60*60*24);
     }
-    let daysStr = days.toLocaleString();
+    let daysStr = `${days.toLocaleString()} day${sOnEnd(days)}`;
 
     return daysStr;
 }
