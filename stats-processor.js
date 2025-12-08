@@ -55,7 +55,7 @@ function timeFormatter(ms) {
     return output;
 }
 function sOnEnd(num) {
-    if (num == 1) {""} else {"s"}
+    if (num == 1) {return ""} else {return "s"}
 }
 function msToHours(ms) {
     let hours = 0
