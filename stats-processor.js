@@ -5,21 +5,13 @@ function calculateStats(songs) {
 
 
     const time = totalTime(songs);
-    stats.innerHTML = `Your total listening time is: ${timeFormatter(time)}!<br>That's ~${msToHours(time)} hours!`;
+    stats.innerHTML = `Your total listening time is: ${timeFormatter(time)}!<br>
+    That's ~${msToHours(time)} hours or ~${msToDays(time)} days!`;
 
     console.log("All stats calculated.")
 }
 
-function msToHours(ms) {
-    let hours = 0
-    while (ms > (1000*60*60)) {
-        hours++;
-        ms-= (1000*60*60);
-    }
-    let hoursStr = hours.toLocaleString();
 
-    return hoursStr;
-}
 function totalTime(songs) {
     console.log("Calculating time...")
     let total = 0
@@ -60,4 +52,24 @@ function timeFormatter(ms) {
     output += `${ms} milliseconds`
     
     return output;
+}
+function msToHours(ms) {
+    let hours = 0
+    while (ms > (1000*60*60)) {
+        hours++;
+        ms -= (1000*60*60);
+    }
+    let hoursStr = hours.toLocaleString();
+
+    return hoursStr;
+}
+function msToDays(ms) {
+    let days = 0
+    while (ms > (1000*60*60*24)) {
+        days++;
+        ms -= (1000*60*60*24);
+    }
+    let daysStr = days.toLocaleString();
+
+    return daysStr;
 }
