@@ -1,27 +1,5 @@
-function calculateStats(songs) {
-    console.log("Calculating stats...")
-    const stats = document.getElementById("stats");
-    stats.innerHTML = "Calculating..."
-
-
-    const time = totalTime(songs);
-    stats.innerHTML = `Your total listening time is: ${timeFormatter(time)}!<br>
-    That's ~${msToHours(time)} or ~${msToDays(time)}!`;
-
-    console.log("All stats calculated.")
-}
-
-
-function totalTime(songs) {
-    console.log("Calculating time...")
-    let total = 0
-    for (const song of songs) {
-        total += song.ms_played
-    }
-    console.log("Time calculated.")
-    return total;
-}
-function timeFormatter(ms) {
+// Moved all the time still into here because it was a bit messy
+export function timeFormatter(ms) {
     let s=0, m=0, h=0, d=0, y=0;
     while (ms > 1000) {
         s++;
@@ -54,10 +32,10 @@ function timeFormatter(ms) {
     
     return output;
 }
-function sOnEnd(num) {
+export function sOnEnd(num) {
     if (num == 1) {return ""} else {return "s"}
 }
-function msToHours(ms) {
+export function msToHours(ms) {
     let hours = 0
     while (ms > (1000*60*60)) {
         hours++;
@@ -67,7 +45,7 @@ function msToHours(ms) {
 
     return hoursStr;
 }
-function msToDays(ms) {
+export function msToDays(ms) {
     let days = 0
     while (ms > (1000*60*60*24)) {
         days++;
