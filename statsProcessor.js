@@ -46,16 +46,20 @@ function totalTime(songs) {
 function topSongs(songs) {
     console.log("Calculating top songs...");
     const topSongs = {};
+    const topSongsTime = {};
 
     for (const song of songs) {
         topSongs[song.master_metadata_track_name] = (topSongs[song.master_metadata_track_name] || 0) + 1; 
+        topSongsTime[song.master_metadata_track_name] = (topSongsTime[song.master_metadata_track_name] || 0) + song.ms_played; 
     }
 
     const sortedSongs = Object.entries(topSongs)
         .sort(([, countA], [, countB]) => countB - countA);
+    const sortedSongsTime = Object.entries(topSongsTime)
+        .sort(([, countA], [, countB]) => countB - countA);
 
     console.log("Top songs calculated.");
-    return sortedSongs;
+    return sortedSongsTime;
 }
 
 function topArtists(songs) {
