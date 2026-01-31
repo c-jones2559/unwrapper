@@ -7,7 +7,7 @@ export function calculateStats(songs) {
 
 
     const time = totalTime(songs);
-    const output = `<h2>Overview</h2>
+    let output = `<h2>Overview</h2>
     Your total listening time is: ${timeFormatter(time)}!<br>
     That's ~${msToHours(time)} or ~${msToDays(time)}!<br>`
 
