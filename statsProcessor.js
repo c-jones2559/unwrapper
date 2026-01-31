@@ -58,7 +58,7 @@ function topByCategoryAndYear(songs, category, year) {
             songs2.push(song);
         }
     }
-    console.log("Year separation done.")
+    console.log(`Year separation done. ${songs2.length} songs from ${year}.`)
     console.log("Categorising...")
     if (category == "song") {return topSongs(songs2);} else
     if (category == "artist") {return topArtists(songs2);} else
