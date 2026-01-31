@@ -55,6 +55,7 @@ function topByCategoryAndYear(songs, category, year) {
     let songs2 = [];
     for (const song of songs) {
         if (song.ts.slice(0, 3) == year.toString()) {
+            console.log(`song.ts: ${song.ts}\nsong.ts.slice(0, 3): ${song.ts.slice(0, 3)}\nyear.toString(): ${year.toString()}`)
             songs2.push(song);
         }
     }
