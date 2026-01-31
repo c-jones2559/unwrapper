@@ -51,15 +51,19 @@ function totalTime(songs) {
 }
 
 function topByCategoryAndYear(songs, category, year) {
+    console.log("Starting year separation...")
     let songs2 = [];
     for (const song of songs) {
         if (song.ts.slice(0, 3) == year.toString()) {
             songs2.push(song);
         }
     }
+    console.log("Year separation done.")
+    console.log("Categorising...")
     if (category == "song") {return topSongs(songs2);} else
     if (category == "artist") {return topArtists(songs2);} else
     if (category == "album") {return topAlbums(songs2);} else
+    console.error("You should only enter song, artist, or album into this function.")
     throw error;
 }
 
