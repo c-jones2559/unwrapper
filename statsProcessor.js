@@ -1,6 +1,6 @@
 import { timeFormatter, msToDays, msToHours, sOnEnd } from './timeBits.js';
 
-function calculateStats(songs) {
+export function calculateStats(songs) {
     console.log("Calculating stats...")
     const stats = document.getElementById("stats");
     stats.innerHTML = "Calculating..."
