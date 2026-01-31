@@ -59,11 +59,9 @@ function updateBentoStats(data) {
     const totalMs = totalTime(data);
     document.getElementById('total-time-display').innerText = msToHours(totalMs);
 
-    // We only need the names for the header, so we look at the first key of the sorted array
     const songs = topSongs(data);
     const artists = topArtists(data);
 
-    // sortedData is now [Name, {count, time}]
     document.getElementById('top-song-display').innerText = songs.length > 0 ? songs[0][0] : "-";
     document.getElementById('top-artist-display').innerText = artists.length > 0 ? artists[0][0] : "-";
 }
@@ -102,7 +100,7 @@ function setupYearOptions(data) {
     });
 }
 
-// 7. The New HTML Generator (With Time formatting)
+// 7. Updated HTML Generator (Now includes Artist logic)
 function generateListHTML(sortedData) {
     if (!sortedData.length) return `<p>No data found for this period.</p>`;
     
@@ -110,14 +108,22 @@ function generateListHTML(sortedData) {
     
     for (let i = 0; i < 50 && i < sortedData.length; i++) {
         const name = sortedData[i][0];
-        const count = sortedData[i][1].count;
-        const timeMs = sortedData[i][1].time;
+        const stats = sortedData[i][1];
+        const count = stats.count;
+        const timeMs = stats.time;
+        // This will be undefined for the Artists tab, which is fine
+        const artist = stats.artist; 
 
-        // Custom formatting: "30 hours, 12 minutes"
         const timeString = formatHoursAndMinutes(timeMs);
 
+        // Build the main text: "Song Name" or "Song Name by Artist"
+        let headerContent = `<strong>${name}</strong>`;
+        if (artist) {
+            headerContent += ` <span style="color: #888; font-weight: normal;">by ${artist}</span>`;
+        }
+
         html += `<li>
-                    <strong>${name}</strong><br>
+                    ${headerContent}<br>
                     <span style="color: #b3b3b3; font-size: 0.9em;">
                         ${count.toLocaleString()} plays &bull; <em>${timeString}</em>
                     </span>
@@ -127,7 +133,7 @@ function generateListHTML(sortedData) {
     return html;
 }
 
-// 8. Custom Time Formatter for the List
+// 8. Custom Time Formatter
 function formatHoursAndMinutes(ms) {
     const minutes = Math.floor(ms / 60000);
     const hours = Math.floor(minutes / 60);
@@ -136,7 +142,7 @@ function formatHoursAndMinutes(ms) {
     return `${hours} hour${sOnEnd(hours)}, ${remainingMinutes} minute${sOnEnd(remainingMinutes)}`;
 }
 
-// --- DATA PROCESSING HELPERS (Updated to track Time AND Count) ---
+// --- DATA PROCESSORS (Updated to capture Artist name) ---
 
 function totalTime(songs) {
     return songs.reduce((acc, song) => acc + (song.ms_played || 0), 0);
@@ -147,12 +153,16 @@ function topSongs(songs) {
     for (const song of songs) {
         const name = song.master_metadata_track_name;
         if (name) {
-            if (!stats[name]) stats[name] = { count: 0, time: 0 };
+            // Initialize with artist name if it's new
+            if (!stats[name]) stats[name] = { 
+                count: 0, 
+                time: 0, 
+                artist: song.master_metadata_album_artist_name 
+            };
             stats[name].count++;
             stats[name].time += song.ms_played || 0;
         }
     }
-    // Sort by Count
     return Object.entries(stats).sort((a, b) => b[1].count - a[1].count);
 }
 
@@ -161,7 +171,7 @@ function topArtists(songs) {
     for (const song of songs) {
         const name = song.master_metadata_album_artist_name;
         if (name) {
-            if (!stats[name]) stats[name] = { count: 0, time: 0 };
+            if (!stats[name]) stats[name] = { count: 0, time: 0 }; // Artist name is already the key
             stats[name].count++;
             stats[name].time += song.ms_played || 0;
         }
@@ -174,7 +184,12 @@ function topAlbums(songs) {
     for (const song of songs) {
         const name = song.master_metadata_album_album_name;
         if (name) {
-            if (!stats[name]) stats[name] = { count: 0, time: 0 };
+            // Initialize with artist name if it's new
+            if (!stats[name]) stats[name] = { 
+                count: 0, 
+                time: 0, 
+                artist: song.master_metadata_album_artist_name 
+            };
             stats[name].count++;
             stats[name].time += song.ms_played || 0;
         }
