@@ -41,6 +41,11 @@ p, label {
     color: #e0e0e0;
 }
 
+/* Utility Class for JS toggling */
+.hidden {
+    display: none !important;
+}
+
 input[type="file"] {
     margin: 1rem 0 0.5rem 0;
     padding: 0.5rem;
@@ -69,19 +74,7 @@ button:hover {
     background: #169943;
 }
 
-#stats {
-    background: #222;
-    color: #1db954;
-    border-radius: 6px;
-    padding: 1.2rem 2rem;
-    margin: 1.5rem auto;
-    font-size: 1.1rem;
-    min-width: 320px;
-    max-width: 600px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-    text-align: center;
-}
-
+/* Status/Loading Message container */
 #valid {
     color: #ffb347;
     font-size: 1rem;
@@ -99,7 +92,9 @@ a:hover {
     color: #fff;
 }
 
-/* The Bento Grid - Modern and snappy */
+/* --- DASHBOARD LAYOUT --- */
+
+/* The Bento Grid */
 #bento-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -111,14 +106,14 @@ a:hover {
 }
 
 .card {
-    background: #282828; /* Spotify card grey */
+    background: #282828;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
 .big-card {
-    grid-row: 1 / span 2; /* Takes up the whole left side */
+    grid-row: 1 / span 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -127,11 +122,17 @@ a:hover {
     color: #1db954;
 }
 
-/* Control Bar - Make it sticky so it follows the user */
+.small-card h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    color: #b3b3b3;
+}
+
+/* Control Bar (Sticky) */
 #controls {
     position: sticky;
     top: 10px;
-    background: rgba(24, 24, 24, 0.95); /* Slight transparency */
+    background: rgba(24, 24, 24, 0.95);
     backdrop-filter: blur(5px);
     padding: 1rem;
     border-radius: 8px;
@@ -139,9 +140,11 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     max-width: 800px;
+    width: 90%; /* Match grid width */
     margin: 0 auto 1rem auto;
     z-index: 100;
-    border-bottom: 1px solid #333;
+    border: 1px solid #333;
+    box-sizing: border-box; /* Important so padding doesn't break layout */
 }
 
 .tab-btn {
@@ -150,9 +153,48 @@ a:hover {
     padding: 0.5rem 1rem;
     margin-right: 0.5rem;
     font-size: 0.9rem;
+    color: #f3f3f3;
+    cursor: pointer;
+    border-radius: 20px; /* Pill shape */
+    transition: all 0.2s;
 }
 
 .tab-btn.active {
     background: #1db954;
     color: white;
+}
+
+#time-range {
+    padding: 0.5rem;
+    background: #282828;
+    color: #f3f3f3;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+/* --- THE NEW LIST (Anti-Wiggle) --- */
+.stats-list {
+    /* Fixed width logic to stop jumping */
+    width: 100%;
+    max-width: 800px; /* Matches the grid/controls */
+    box-sizing: border-box;
+    
+    margin: 0 auto 2rem auto;
+    background: #282828;
+    padding: 2rem 3rem;
+    border-radius: 8px;
+    
+    /* Using 'outside' pushes numbers to the left, but keeps the text block solid */
+    list-style-position: outside; 
+}
+
+.stats-list li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #333;
+    color: #e0e0e0;
+    line-height: 1.4;
+}
+
+.stats-list li:last-child {
+    border-bottom: none;
 }
