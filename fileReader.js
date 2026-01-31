@@ -89,7 +89,7 @@ const validFields = [
 
 function checkValid (songs) {
     console.log("Checking valid...");
-    const stats = document.getElementById("stats");
+    const stats = document.getElementById("content-viewport");
 
     stats.innerHTML = "Checking file is valid, hold on a second...";
 
