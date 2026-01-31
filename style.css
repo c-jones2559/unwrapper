@@ -98,3 +98,61 @@ a {
 a:hover {
     color: #fff;
 }
+
+/* The Bento Grid - Modern and snappy */
+#bento-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 1rem auto;
+    width: 90%;
+}
+
+.card {
+    background: #282828; /* Spotify card grey */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.big-card {
+    grid-row: 1 / span 2; /* Takes up the whole left side */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #1db954;
+}
+
+/* Control Bar - Make it sticky so it follows the user */
+#controls {
+    position: sticky;
+    top: 10px;
+    background: rgba(24, 24, 24, 0.95); /* Slight transparency */
+    backdrop-filter: blur(5px);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto 1rem auto;
+    z-index: 100;
+    border-bottom: 1px solid #333;
+}
+
+.tab-btn {
+    background: transparent;
+    border: 1px solid #1db954;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.tab-btn.active {
+    background: #1db954;
+    color: white;
+}
