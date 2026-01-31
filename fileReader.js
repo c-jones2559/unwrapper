@@ -60,7 +60,7 @@ async function buttonClick() {
         // const mergedObj = Object.assign({}, ...combinedData.map(d => d.content));
 
     } catch (error) {
-        console.error("It's all gone pear-shaped:", error);
+        console.error("Error: ", error);
     }
 };
 
