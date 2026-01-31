@@ -3,7 +3,7 @@ import { timeFormatter, msToDays, msToHours, sOnEnd } from './timeBits.js';
 export function calculateStats(songs) {
     console.log("Calculating stats...")
     const stats = document.getElementById("stats");
-    stats.innerHTML = "Calculating..."
+    stats.innerHTML = "Calculating...<br>If you're seeing this, there's probably an error."
 
 
     const time = totalTime(songs);
@@ -49,7 +49,7 @@ function topSongs(songs) {
     const topSongsTime = {};
 
     for (const song of songs) {
-        if song.master_metadata_track_name == null {continue;}
+        if (song.master_metadata_track_name == null) {continue;}
         topSongs[song.master_metadata_track_name] = (topSongs[song.master_metadata_track_name] || 0) + 1; 
         topSongsTime[song.master_metadata_track_name] = (topSongsTime[song.master_metadata_track_name] || 0) + song.ms_played; 
     }
