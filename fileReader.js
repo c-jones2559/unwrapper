@@ -1,3 +1,5 @@
+import { calculateStats } from './statsProcessor.js';
+
 /**
  * The first two functions read the inputted json files.
  * I got AI to do it because I don't understand JS.
