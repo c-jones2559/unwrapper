@@ -13,19 +13,19 @@ export function calculateStats(songs) {
 
     output += `<h2>Top songs</h2>`
     const sortedSongs = topSongs(songs);
-    for (int i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
         output += `${i}. ${sortedSongs[i][0]} with ${sortedSongs[i][1]} listens!<br>`;
     }
 
     output += `<h2>Top artists</h2>`
     const sortedArtists = topArtists(songs);
-    for (int i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
         output += `${i}. ${sortedArtists[i][0]} with ${sortedArtists[i][1]} listens!<br>`;
     }
 
     output += `<h2>Top albums</h2>`
     const sortedAlbums = topAlbums(songs);
-    for (int i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
         output += `${i}. ${sortedAlbums[i][0]} with ${sortedAlbums[i][1]} listens!<br>`;
     }
 
