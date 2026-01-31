@@ -7,12 +7,29 @@ export function calculateStats(songs) {
 
 
     const time = totalTime(songs);
+    output = `<h2>Overview</h2>
+    Your total listening time is: ${timeFormatter(time)}!<br>
+    That's ~${msToHours(time)} or ~${msToDays(time)}!<br>`
+
+    output += `<h2>Top songs</h2>`
     const sortedSongs = topSongs(songs);
+    for (int i = 0; i < 10; i++) {
+        output += `${i}. ${sortedSongs[i][0]} with ${sortedSongs[i][1]} listens!<br>`;
+    }
+
+    output += `<h2>Top artists</h2>`
     const sortedArtists = topArtists(songs);
-    stats.innerHTML = `Your total listening time is: ${timeFormatter(time)}!<br>
-    That's ~${msToHours(time)} or ~${msToDays(time)}!<br>
-    Your top song is ${sortedSongs[0][0]} with ${sortedSongs[0][1]} listens!<br>
-    Your top artist is ${sortedArtists[0][0]} with ${sortedArtists[0][1]} listens!`
+    for (int i = 0; i < 10; i++) {
+        output += `${i}. ${sortedArtists[i][0]} with ${sortedArtists[i][1]} listens!<br>`;
+    }
+
+    output += `<h2>Top albums</h2>`
+    const sortedAlbums = topAlbums(songs);
+    for (int i = 0; i < 10; i++) {
+        output += `${i}. ${sortedAlbums[i][0]} with ${sortedAlbums[i][1]} listens!<br>`;
+    }
+
+    stats.innerHTML = output;
     console.log("All stats calculated.");
 }
 
@@ -41,7 +58,6 @@ function topSongs(songs) {
     return sortedSongs;
 }
 
-
 function topArtists(songs) {
     console.log("Calculating top artists...");
     const topArtists = {};
@@ -55,4 +71,19 @@ function topArtists(songs) {
 
     console.log("Top artists calculated.");
     return sortedArtists;
+}
+
+function topAlbums(songs) {
+    console.log("Calculating top albums...");
+    const topAlbums = {};
+
+    for (const song of songs) {
+        topAlbums[song.master_metadata_album_album_name] = (topAlbums[song.master_metadata_album_album_name] || 0) + 1; 
+    }
+
+    const sortedAlbums = Object.entries(topAlbums)
+        .sort(([, countA], [, countB]) => countB - countA);
+
+    console.log("Top albums calculated.");
+    return sortedAlbums;
 }
