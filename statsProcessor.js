@@ -49,6 +49,7 @@ function topSongs(songs) {
     const topSongsTime = {};
 
     for (const song of songs) {
+        if song.master_metadata_track_name == null {continue;}
         topSongs[song.master_metadata_track_name] = (topSongs[song.master_metadata_track_name] || 0) + 1; 
         topSongsTime[song.master_metadata_track_name] = (topSongsTime[song.master_metadata_track_name] || 0) + song.ms_played; 
     }
