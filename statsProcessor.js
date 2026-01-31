@@ -142,7 +142,7 @@ function topSongs(songs) {
     const counts = {};
     for (const song of songs) {
         const name = song.master_metadata_track_name;
-        if (name) counts[name] = (counts[name] || 0) + 1;
+        if (name) counts[name] = (counts[name] || 0) + song.ms_played;
     }
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
 }
@@ -151,7 +151,7 @@ function topArtists(songs) {
     const counts = {};
     for (const song of songs) {
         const name = song.master_metadata_album_artist_name;
-        if (name) counts[name] = (counts[name] || 0) + 1;
+        if (name) counts[name] = (counts[name] || 0) + song.ms_played;
     }
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
 }
@@ -160,7 +160,7 @@ function topAlbums(songs) {
     const counts = {};
     for (const song of songs) {
         const name = song.master_metadata_album_album_name;
-        if (name) counts[name] = (counts[name] || 0) + 1;
+        if (name) counts[name] = (counts[name] || 0) + song.ms_played;
     }
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
 }
