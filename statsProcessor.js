@@ -119,7 +119,7 @@ function generateListHTML(sortedData) {
         // Build the main text: "Song Name" or "Song Name by Artist"
         let headerContent = `<strong>${name}</strong>`;
         if (artist) {
-            headerContent += ` <span style="color: #888; font-weight: normal;">by ${artist}</span>`;
+            headerContent += `<span style="color: #888; font-weight: normal;"> - ${artist}</span>`;
         }
 
         html += `<li>

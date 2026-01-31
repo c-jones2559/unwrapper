@@ -172,20 +172,14 @@ a:hover {
     border-radius: 4px;
 }
 
-/* --- THE NEW LIST (Anti-Wiggle) --- */
 .stats-list {
-    /* Fixed width logic to stop jumping */
-    width: 100%;
-    max-width: 800px; /* Matches the grid/controls */
+    width: 100%; /* Fill the viewport we just defined */
     box-sizing: border-box;
-    
-    margin: 0 auto 2rem auto;
     background: #282828;
     padding: 2rem 3rem;
     border-radius: 8px;
-    
-    /* Using 'outside' pushes numbers to the left, but keeps the text block solid */
-    list-style-position: outside; 
+    list-style-position: outside;
+    margin-bottom: 2rem; /* Just a bit of space at the bottom */
 }
 
 .stats-list li {
@@ -197,4 +191,10 @@ a:hover {
 
 .stats-list li:last-child {
     border-bottom: none;
+}
+
+#content-viewport {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
 }
