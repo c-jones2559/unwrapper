@@ -17,6 +17,13 @@ export function calculateStats(songs) {
         output += `${i+1}. ${sortedSongs[i][0]} with ${sortedSongs[i][1]} listens!<br>`;
     }
 
+    output += `<h2>Top songs of 2025</h2>`
+    sortedSongs = topByCategoryAndYear(songs, "song", 2025);
+    for (let i = 0; i < 10 && i < sortedSongs.length; i++) {
+        output += `${i+1}. ${sortedSongs[i][0]} with ${sortedSongs[i][1]} listens!<br>`;
+    }
+
+
     output += `<h2>Top artists</h2>`
     const sortedArtists = topArtists(songs);
     for (let i = 0; i < 10 && i < sortedArtists.length; i++) {
@@ -41,6 +48,19 @@ function totalTime(songs) {
     }
     console.log("Time calculated.");
     return total;
+}
+
+function topByCategoryAndYear(songs, category, year) {
+    let songs2 = [];
+    for (const song of songs) {
+        if (song.ts.slice(0, 3) == year.toString()) {
+            songs2.push(song);
+        }
+    }
+    if (category == "song") {return topSongs(songs2);} else
+    if (category == "artist") {return topArtists(songs2);} else
+    if (category == "album") {return topAlbums(songs2);} else
+    throw error;
 }
 
 function topSongs(songs) {
