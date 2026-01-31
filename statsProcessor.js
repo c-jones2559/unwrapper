@@ -13,19 +13,19 @@ export function calculateStats(songs) {
 
     output += `<h2>Top songs</h2>`
     const sortedSongs = topSongs(songs);
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10 && i < sortedSongs.length(); i++) {
         output += `${i+1}. ${sortedSongs[i][0]} with ${sortedSongs[i][1]} listens!<br>`;
     }
 
     output += `<h2>Top artists</h2>`
     const sortedArtists = topArtists(songs);
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10 && i < sortedArtists.length(); i++) {
         output += `${i+1}. ${sortedArtists[i][0]} with ${sortedArtists[i][1]} listens!<br>`;
     }
 
     output += `<h2>Top albums</h2>`
     const sortedAlbums = topAlbums(songs);
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10 && i < sortedAlbums.length(); i++) {
         output += `${i+1}. ${sortedAlbums[i][0]} with ${sortedAlbums[i][1]} listens!<br>`;
     }
 
