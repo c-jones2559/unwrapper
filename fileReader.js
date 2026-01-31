@@ -32,8 +32,7 @@ const readJsonFile = (file) => {
 };
 
 // 2. The Event Listener
-async function buttonClick() {
-// document.getElementById('processBtn').addEventListener('click', async () => {
+document.getElementById('processBtn').addEventListener('click', async () => {
     const inputElement = document.getElementById('input');
 
     if (!inputElement.files.length) {
@@ -42,11 +41,9 @@ async function buttonClick() {
     }
 
     try {
-        // Convert the FileList to an Array, map to Promises, and await them all at once
         const promises = Array.from(inputElement.files).map(readJsonFile);
         const combinedData = await Promise.all(promises);
 
-        // Flatten all song objects from all files into one array
         let songs = [];
         for (const file of combinedData) {
             if (Array.isArray(file.content)) {
@@ -55,16 +52,14 @@ async function buttonClick() {
                 songs.push(file.content);
             }
         }
+        
         console.log("All songs:", songs);
         checkValid(songs);
-
-        // If you absolutely MUST merge them into one giant object (risky business):
-        // const mergedObj = Object.assign({}, ...combinedData.map(d => d.content));
 
     } catch (error) {
         console.error("Error: ", error);
     }
-};
+});
 
 const validFields = [
     "ts",
