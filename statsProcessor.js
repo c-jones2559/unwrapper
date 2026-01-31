@@ -18,9 +18,9 @@ export function calculateStats(songs) {
     }
 
     output += `<h2>Top songs of 2025</h2>`
-    sortedSongs = topByCategoryAndYear(songs, "song", 2025);
-    for (let i = 0; i < 10 && i < sortedSongs.length; i++) {
-        output += `${i+1}. ${sortedSongs[i][0]} with ${sortedSongs[i][1]} listens!<br>`;
+    const sortedSongsYear = topByCategoryAndYear(songs, "song", 2025);
+    for (let i = 0; i < 10 && i < sortedSongsYear.length; i++) {
+        output += `${i+1}. ${sortedSongsYear[i][0]} with ${sortedSongsYear[i][1]} listens!<br>`;
     }
 
 
@@ -80,7 +80,7 @@ function topSongs(songs) {
         .sort(([, countA], [, countB]) => countB - countA);
 
     console.log("Top songs calculated.");
-    return sortedSongsTime;
+    return sortedSongs;
 }
 
 function topArtists(songs) {
