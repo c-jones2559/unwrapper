@@ -14,7 +14,7 @@ export function calculateStats(songs) {
     output += `<h2>Top songs</h2>`
     const sortedSongs = topSongs(songs);
     for (let i = 0; i < 10; i++) {
-        output += `${i}. ${sortedSongs[i][0]} with ${sortedSongs[i][1]} listens!<br>`;
+        output += `${i+1}. ${sortedSongs[i][0]} with ${sortedSongs[i][1]} listens!<br>`;
     }
 
     output += `<h2>Top artists</h2>`
