@@ -64,9 +64,11 @@ function topByCategoryAndYear(songs, category, year) {
     console.log("Categorising...")
     if (category == "song") {return topSongs(songs2);} else
     if (category == "artist") {return topArtists(songs2);} else
-    if (category == "album") {return topAlbums(songs2);} else
-    console.error("You should only enter song, artist, or album into this function.")
-    throw error;
+    if (category == "album") {return topAlbums(songs2);} else {
+        console.error("You should only enter song, artist, or album into this function.")
+        return [];
+    }
+  
 }
 
 function topSongs(songs) {
