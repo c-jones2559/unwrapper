@@ -1,13 +1,5 @@
 import { calculateStats } from './statsProcessor.js';
 
-/**
- * The first two functions read the inputted json files.
- * I got AI to do it because I don't understand JS.
- * At the bottom of this file there's check valid which I made.
- * 
- * 
- */
-
 // 1. Helper function to promise-ify the FileReader (makes life way easier)
 const readJsonFile = (file) => {
     return new Promise((resolve, reject) => {
